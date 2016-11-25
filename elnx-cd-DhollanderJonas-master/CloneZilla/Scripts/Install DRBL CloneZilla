@@ -1,0 +1,39 @@
+#!/bin/bash
+#Installatie DRBL CloneZilla
+
+set -o errexit # abort on nonzero exitstatus
+set -o nounset # abort on unbound variable
+
+#Download and install
+
+rm -f GPG-KEY-DRBL; wget http://drbl.org/GPG-KEY-DRBL; rpm --import GPG-KEY-DRBL
+gpg --keyserver pgp.mit.edu --recv-key D7E8DF3A
+gpg -a --export D7E8DF3A > GPG-KEY-DRBL; rpm --import GPG-KEY-DRBL
+wget https://sourceforge.net/projects/drbl/files/drbl_stable/2.20.11/drbl-2.20.11-drbl2.noarch.rpm/download
+sudo yum install perl
+rpm -Uvh download --nodeps
+
+#Configuration
+# Run DRBL Install Script
+# Note: 'yes "" | <cmd>' just hits enter for the drblsrv command when prompted
+yes "" | drblsrv -i --netinstall n --console-output n --upgrade_system n --client_archi 2 --client_kernel_from 1
+
+
+# Run DRBL Script to setup environment for imaging with CloneZilla
+drbl4imp -b -c 2 -p 40 -k 2 -r 1 -u 2 -z 3
+
+
+# Setup the script to kick off imaging clients
+echo "Making script to image clients..."
+SCRIPT_NAME=/home/`cat /etc/passwd | grep $EUID | cut -d: -f1`/imageClients.sh
+touch $SCRIPT_NAME
+chmod 755 $SCRIPT_NAME
+echo "#!/bin/bash"                              >> $SCRIPT_NAME
+echo "echo \"Clearing DHCP Tables...\""         >> $SCRIPT_NAME
+echo "rm /var/lib/dhcp/dhcpd.leases~"           >> $SCRIPT_NAME
+echo "echo \"\" > /var/lib/dhcp/dhcpd.leases"   >> $SCRIPT_NAME
+echo "echo \"Kicking off...\""                  >> $SCRIPT_NAME
+echo "drbl-ocs -b -g auto -e1 auto -e2 -r -x -j2 -p reboot --clients-to-wait 23 -l en_US.UTF-8 startdisk multicast_restore IMAGE_NAME sda" >> $SCRIPT_NAME
+
+echo "Done!"
+
