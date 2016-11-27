@@ -110,6 +110,69 @@ This will be continued by creating jobs.
  delegate_to: 127.0.0.1
  tags: [service]
  ```
+ ##### Deployement
+ 
+ ###### Create service directory, copy all files we need to destination server (files defined in roles/service/defaults/main.yml)
+- service_name -> file destinations
+```
+ - name: Directory is created
+ file:
+ path: /data/{{ service_name }}
+ recurse: yes
+ state: directory
+ tags: [service]
+
+ - name: Files are copied
+ copy:
+ src: "{{ item.src }}"
+ dest: "{{ item.dest }}"
+ with_items: files
+ tags: [service]
+ ```
+ 
+ ###### Pull latest image from docker registry and bring it up. When upped check wether container image or its config changed when compared with running containter. If it is Docker Compose will stop the running containers and run the new ones. Consul-template updates configurations and reloads nginx.
+ ```
+ - name: Containers are pulled
+ shell: docker-compose pull app
+ args:
+ chdir: /data/{{ service_name }}
+ tags: [service]
+
+ - name: Containers are running
+ shell: docker-compose up -d app
+ args:
+ chdir: /data/{{ service_name }}
+ tags: [service]
+
+ - name: Proxy is configured
+ shell: consul-template \
+ -consul localhost:8500 \
+ -template "{{ ct_src }}:{{ ct_dest }}:{{ ct_cmd }}" \
+ -once
+ tags: [service]
+ ```
+ #### Post deployement tasks
+ 
+ ```
+ name: Post-deployment tests are run
+ shell: docker-compose \
+ -f docker-compose-dev.yml \
+ run --rm \
+ -e DOMAIN={{ proxy_url }} \
+ integ
+ args:
+ chdir: "{{ repo_dir }}"
+ delegate_to: 127.0.0.1
+ tags: [service, tests]
+
+ - name: Tests container is pushed
+ shell: docker push \
+ {{ registry_url }}{{ service_name }}-tests
+ delegate_to: 127.0.0.1
+ tags: [service, tests]
+ ```
+ 
+ ##### Run integration tests and push the tests container to the registry
  
 #### 2. Build the docker containers
 
