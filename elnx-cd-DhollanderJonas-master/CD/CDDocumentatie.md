@@ -54,8 +54,8 @@ This will be continued by creating jobs.
 
 #### 1. Pre-deployement tests
 - Start by running test that do not require a service to be deployed
- - Build test container with the Dockerfile.test
- - Run all pre-deployement tests and compile into JAR file for distribution (docker-compose-dev.yml).
+ - Build test container with the Dockerfile.test (Test enviroment) with name 10.100.198.200:5000/books-ms-tests.
+ - Run all pre-deployement tests and compile the Scala code into JAR file for distribution (docker-compose-dev.yml).
 
 #### 2. Build the docker containers
 - We'll build a container which will be deployed to production based on the dockerfile in the case.
@@ -63,5 +63,10 @@ This will be continued by creating jobs.
  - `CMD` specifies the command that will be executed when the container starts
 
 #### 3. Running containers
+- Here we will start the db container required by the service.
 
+#### 4. Pushing containers to the registry
+- The docker registry is used to store en retrieve containers. Adding a container will allow us to pll it from any plce that can access the cd server. 
+
+All the steps we run now are performed on the cd VM.
 
