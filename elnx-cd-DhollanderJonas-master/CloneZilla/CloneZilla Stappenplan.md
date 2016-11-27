@@ -9,8 +9,6 @@ Authors: Jonas D'hollander & Dries Boone
 Edit de SELlinux file met een teksteditor zodat `SELINUX=disabled` is.
 
 Gebruik het toegevoegde script in `/Scripts/Install DRBL CloneZilla` om de DRBL server te installeren. Voer het script uit met sudo rechten.
-Wanneer de installatie uitgevoerd geweest is, zal de gebruiker om configuratie instellingen gevraagd worden. 
-
 
 ga naar `tftpboot/nbi_img/pxelinux.cfg/default` en edit de 2 labels op volgende manier:
 
