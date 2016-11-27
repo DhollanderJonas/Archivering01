@@ -56,7 +56,55 @@ This will be continued by creating jobs.
 - Start by running test that do not require a service to be deployed
  - Build test container with the Dockerfile.test (Test enviroment) with name 10.100.198.200:5000/books-ms-tests.
  - Run all pre-deployement tests and compile the Scala code into JAR file for distribution (docker-compose-dev.yml).
+##### Build the test containers 
+ 
+ ```
+ - name: Tests container is pulled
+ shell: docker pull \
+ {{ registry_url }}{{ service_name }}-tests
+ delegate_to: 127.0.0.1
+ ignore_errors: yes
+ tags: [service, tests]
 
+ - name: Tests container is built
+ shell: docker build \
+ -t {{ registry_url }}{{ service_name }}-tests \
+ -f Dockerfile.test \
+ .
+ args:
+ chdir: "{{ repo_dir }}"
+ delegate_to: 127.0.0.1
+ tags: [service, tests]
+```
+- registry_url -> IP and port of the docker registry (default in groups_vars/all
+###### Predeployement tests, Build container & Push to registry
+
+```
+ - name: Pre-deployment tests are run
+ shell: docker-compose \
+ -f docker-compose-dev.yml \
+ run --rm tests
+ args:
+ chdir: "{{ repo_dir }}"
+ delegate_to: 127.0.0.1
+ tags: [service, tests]
+
+ - name: Container is built
+ shell: docker build \
+ -t {{ registry_url }}{{ service_name }} \
+ .
+ args:
+ chdir: "{{ repo_dir }}"
+ delegate_to: 127.0.0.1
+ tags: [service]
+
+ - name: Container is pushed
+ shell: docker push \
+ {{ registry_url }}{{ service_name }}
+ delegate_to: 127.0.0.1
+ tags: [service]
+ ```
+ 
 #### 2. Build the docker containers
 - We'll build a container which will be deployed to production based on the dockerfile in the case.
  - `RUN` executes a set of commands that updates packages - installs services 
