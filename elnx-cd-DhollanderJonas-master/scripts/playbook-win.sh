@@ -26,7 +26,7 @@ fi
 
 # Install Ansible and its dependencies if it's not installed already.
 if [ ! -f /usr/bin/ansible ] ; then
- if [ ! -f /etc/os-release ] ; then
+ if [ -f /etc/os-release ] ; then
   echo "Installing Ansible dependencies and build tools."
   yum install -y gcc git python-devel libffi-devel openssl-devel python-setuptools
   echo "Installing pip via easy_install."
@@ -38,7 +38,7 @@ if [ ! -f /usr/bin/ansible ] ; then
   echo "Ansible installed:"
   ansible --version
 
-  elif [ ! -f /etc/lsb-release ] ; then
+  elif [ -f /etc/lsb-release ] ; then
       echo "Installing Ansible..."
       apt-get install -y software-properties-common
       apt-add-repository ppa:ansible/ansible
