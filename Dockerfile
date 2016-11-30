@@ -1,24 +1,16 @@
-#New Comment
-FROM node:latest
-MAINTAINER dhollander.jonas@gmail.com
+FROM java
+MAINTAINER Viktor Farcic "viktor@farcic.com"
 
-# set default workdir
-WORKDIR /usr/src
+ENV DB_DBNAME books
+ENV DB_COLLECTION books
+ENV DB_HOST localhost
 
-# Add package.json to allow for caching
-COPY package.json /usr/src/package.json
+COPY run.sh /run.sh
+RUN chmod +x /run.sh
 
-# Install app dependencies
-RUN npm install
+COPY target/scala-2.10/books-ms-assembly-1.0.jar /bs.jar
+COPY client/components /client/components
 
-# Bundle app source and tests
-COPY app.js /usr/src/
-COPY test /usr/src/test
-COPY script /usr/src/script
+CMD ["/run.sh"]
 
-# user to non-privileged user
-USER nobody
-
-# Expose the application port and run application
-EXPOSE 5000
-CMD ["node","app.js"]
+EXPOSE 8080
