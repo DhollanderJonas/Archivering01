@@ -25,7 +25,8 @@ if [ ! -f ${inventory} ]; then
 fi
 
 # Install Ansible and its dependencies if it's not installed already.
-if [ ! -f /usr/bin/ansible ]; then
+if [ ! -f /usr/bin/ansible ] ; then
+ if [ ! -f /etc/os-release ] ; then
   echo "Installing Ansible dependencies and build tools."
   yum install -y gcc git python-devel libffi-devel openssl-devel python-setuptools
   echo "Installing pip via easy_install."
@@ -36,6 +37,24 @@ if [ ! -f /usr/bin/ansible ]; then
   pip install ansible
   echo "Ansible installed:"
   ansible --version
+
+  elif [ ! -f /etc/lsb-release ] ; then
+      echo "Installing Ansible..."
+      apt-get install -y software-properties-common
+      apt-add-repository ppa:ansible/ansible
+      apt-get update
+      apt-get install -y --force-yes ansible
+
+            #apt-get update -y
+            #apt-get install -y python-pip python-dev
+            #pip install ansible==1.9.2
+            #mkdir -p /etc/ansible
+            #touch /etc/ansible/hosts
+            #cp /vagrant/ansible/ansible.cfg /etc/ansible/ansible.cfg
+            #mkdir -p /etc/ansible/callback_plugins/
+            #cp /vagrant/ansible/plugins/human_log.py /etc/ansible/callback_plugins/human_log.py
+
+     fi
 fi
 
 ansible-playbook "${playbook}" \
