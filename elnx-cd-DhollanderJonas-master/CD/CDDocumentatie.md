@@ -20,7 +20,8 @@ With the command ```ansible-playbook /vagrant/ansible/prod2.yml -i /vagrant/ansi
 
 - Consul
 - Registrator
-- Consul Template
+- Consul Template (is a very convenient way to create files with values obtained from Consul. As a
+bonus, it can also run arbitrary commands after the files have been updated.)
 - Nginx
 
 This will allow us to proxy all requests to their destination services.
