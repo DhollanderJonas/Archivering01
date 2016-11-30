@@ -30,7 +30,7 @@
   box: ubuntu/trusty64
   ip: 10.100.198.201
 
-- name: cd jenkins
+- name: jenkinsCD
   box: ubuntu/trusty64
   ip: 10.100.198.200
 
