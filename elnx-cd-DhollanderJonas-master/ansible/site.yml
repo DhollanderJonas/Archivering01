@@ -1,9 +1,29 @@
 # site.yml
 ---
-- hosts: srv001
-  become: true
-  roles: []
+- hosts: production
+  remote_user: vagrant
+  serial: 1
+  roles:
+    - common
+    - docker
+    - docker-compose
+    - consul
+    - registrator
+    - consul-template
+    - nginx
+    - java
+    - jenkins-node
 
-- hosts: srv002
-  become: true
-  roles: []
+
+- hosts: jenkins
+  remote_user: vagrant
+  serial: 1
+  roles:
+    - consul-template
+    - jenkins
+    - java
+    - jenkins-node
+
+
+
+
