@@ -15,7 +15,7 @@
     - jenkins-node
 
 
-- hosts: jenkins
+- hosts: jenkinsCD
   remote_user: vagrant
   serial: 1
   roles:
