@@ -1,3 +1,5 @@
+Gitclone https://github.com/vfarcic/ms-lifecycle
+
 Bash in Lifecycle
 ```
 vagrant up cd prod
