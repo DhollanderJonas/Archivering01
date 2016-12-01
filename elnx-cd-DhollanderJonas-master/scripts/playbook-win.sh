@@ -58,6 +58,7 @@ if [ ! -f /usr/bin/ansible ] ; then
             #cp /vagrant/ansible/plugins/human_log.py /etc/ansible/callback_plugins/human_log.py
 
      fi
+  fi
 fi
 
 ansible-playbook "${playbook}" \
