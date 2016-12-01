@@ -26,6 +26,8 @@ fi
 
 # Install Ansible and its dependencies if it's not installed already.
 if [ ! -f /usr/bin/ansible ] ; then
+
+#checks if linux destro is redhat
  if [ -f /etc/os-release ] ; then
   echo "Installing Ansible dependencies and build tools."
   yum install -y gcc git python-devel libffi-devel openssl-devel python-setuptools
@@ -38,6 +40,7 @@ if [ ! -f /usr/bin/ansible ] ; then
   echo "Ansible installed:"
   ansible --version
 
+#checks if linux destro is debian
   elif [ -f /etc/lsb-release ] ; then
       echo "Installing Ansible..."
       apt-get install -y software-properties-common
