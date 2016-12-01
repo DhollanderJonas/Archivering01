@@ -59,7 +59,7 @@ if [ ! -f /usr/bin/ansible ] ; then
 
      fi
   fi
-fi
+
 
 ansible-playbook "${playbook}" \
   --inventory-file="${inventory}" \
