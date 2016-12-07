@@ -27,21 +27,9 @@ fi
 # Install Ansible and its dependencies if it's not installed already.
 if [ ! -f /usr/bin/ansible ] ; then
 
-#checks if linux destro is redhat
- if [ -f /etc/os-release ] ; then
-  echo "Installing Ansible dependencies and build tools."
-  yum install -y gcc git python-devel libffi-devel openssl-devel python-setuptools
-  echo "Installing pip via easy_install."
-  easy_install pip
-  # Make sure setuptools are installed crrectly.
-  pip install setuptools --no-binary :all: --upgrade
-  echo "Installing Ansible."
-  pip install ansible
-  echo "Ansible installed:"
-  ansible --version
 
 #checks if linux destro is debian
-  elif [ -f /etc/lsb-release ] ; then
+  if [ -f /etc/lsb-release ] ; then
       echo "Installing Ansible..."
       apt-get install -y software-properties-common
       apt-add-repository ppa:ansible/ansible
@@ -58,6 +46,19 @@ if [ ! -f /usr/bin/ansible ] ; then
             #cp /vagrant/ansible/plugins/human_log.py /etc/ansible/callback_plugins/human_log.py
 
      fi
+
+
+     elif [ -f /etc/os-release ] ; then
+  	echo "Installing Ansible dependencies and build tools."
+  	yum install -y gcc git python-devel libffi-devel openssl-devel python-setuptools
+  	echo "Installing pip via easy_install."
+  	easy_install pip
+  	# Make sure setuptools are installed crrectly.
+  	pip install setuptools --no-binary :all: --upgrade
+  	echo "Installing Ansible."
+  	pip install ansible
+  	echo "Ansible installed:"
+  	ansible --version
   fi
 
 
