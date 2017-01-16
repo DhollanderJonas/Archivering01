@@ -1,13 +1,27 @@
 # Assignment Enterprise Linux: Continuous Delivery
 
 - Student: Jonas D'hollander
-- Repository: <https://github.com/HoGentTIN/elnx-cd-USER.git>
+- Repository: <https://github.com/HoGentTIN/elnx-cd-DhollanderJonas.git>
+
+- Student: Dries Boone
+- Repository: <https://github.com/HoGentTIN/elnx-cd-DriesB.git>
+
+- Student: Jean-Francois Maes 
+- Repository: <https://github.com/HoGentTIN/elnx-cd-JeanFrancoisMaes.git>
 
 The goal of this assignment is to set up a proof-of-concept Continuous Delivery pipeline in a virtualized environment using the [Ansible](https://ansible.com/) Ansible configuration management system. When you're finished, you should be able to recreate the entire infrastructure *from scratch* using a minimum of manual interventions, ideally a single command (`vagrant up`).
 
 This repository contains the [assignments](doc/), and some scaffolding code to get you started.
 
 The scaffolding code is based on [ansible-skeleton](https://github.com/bertvv/ansible-skeleton), a framework for quickly setting up an Ansible development and testing environment powered by [Vagrant](https://vagrantup.com).
+
+# Assignment Enterprise Linux: CloneZilla
+
+- Student: Jonas D'hollander
+- Repository: <https://github.com/HoGentTIN/elnx-cd-DhollanderJonas.git>
+
+- Student: Dries Boone
+- Repository: <https://github.com/HoGentTIN/elnx-cd-DriesB.git>
 
 ## Author/License information
 
