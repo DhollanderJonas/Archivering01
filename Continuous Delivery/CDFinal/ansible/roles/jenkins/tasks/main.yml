@@ -42,6 +42,10 @@
   register: plugins_result
   tags: [jenkins]
 
+- pause: seconds=60
+  when: container_result|changed
+  tags: [jenkins]
+
 - wait_for:
     path: /data/jenkins/plugins/{{ item }}
   with_items: "{{ plugins }}"

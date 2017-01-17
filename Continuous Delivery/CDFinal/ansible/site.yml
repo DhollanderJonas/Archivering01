@@ -8,3 +8,9 @@
     - docker-flow
     - consul-template
     
+- hosts: localhost
+  remote_user: vagrant
+  serial: 1
+  roles:
+    - consul-template
+    - jenkins
