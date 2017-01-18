@@ -1,20 +1,14 @@
-Gitclone https://github.com/vfarcic/ms-lifecycle
+1. Clone de github repo (DhollanderJonas/Archivering01)
+2. Cd continuous delivery -> cd CDFinal
+3. `vagrant up`
+4. Wacht tot ansible klaar is met provisioning
+5. Surf naar 10.100.198.200:8080 -> Jenkins homescreen
+6. In Jenkins -> start Jenkins job todobackend met wachtwoord “dudusolutions”
+7. `vagrant ssh cd`
+8. `cd \vagrant`
+9. `docker compose up`
+10. Surf naar 10.100.198.200:3000 -> client screen van de app.
+11. Deployment process niet opgenomen in pipeline omdat we voor continuous delivery, niet continuous deployment hebben gewerkt
 
-Bash in Lifecycle
-```
-vagrant up cd prod
-
- vagrant ssh cd
- 
-ansible-playbook /vagrant/ansible/prod2.yml -i /vagrant/ansible/hosts/prod
-
-ansible-playbook /vagrant/ansible/jenkins-node.yml -i /vagrant/ansible/hosts/prod
-
-ansible-playbook /vagrant/ansible/jenkins.yml -c local
-```
-
-Open jenkins in host - > http://10.100.198.200:8080/
-
-Open Docker UI -> http://10.100.198.200:9000/
 
 
