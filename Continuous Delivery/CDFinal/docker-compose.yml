@@ -1,5 +1,5 @@
 app-client:
-  image: dudusolutions/todo-client
+  image: jmenga/todobackend-client
   ports: 
    - "3000:3000"
    
