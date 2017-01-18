@@ -6,7 +6,6 @@
     - docker
     - docker-compose
     - docker-flow
-    - consul-template
     - jenkins
     
 - hosts: prod
@@ -15,10 +14,7 @@
   roles:
     - common
     - docker
-    - docker-compose
-    - consul
-    - registrator
-    - consul-template
+    - docker-compose    
     - nginx
 - hosts: jenkins-node
   remote_user: vagrant
