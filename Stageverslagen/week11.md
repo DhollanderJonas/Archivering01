@@ -8,7 +8,10 @@ Conintuous Delivery
 
 ## Requirements
 
-- Remove obsolete files from CDFinal
+- Read The DevOps 2.0 toolkit and reproduce the given example. Reverse engineer the pipeline
+- Establish gitwebhook for autobuild when push on git
+- Automate install roles when vagrant up
+- Choose 1 job to build
 
 ## Test plan
 
@@ -24,8 +27,11 @@ Conintuous Delivery
 
 ## Test report
 
-The continuous delivery will be established with docker and jenkins as tools
+- Pipeline is created succesfull
+- All jobs are still created
+- Jobs take about 1 hour to finish 
 
 ## Resources
 
 DevOps 2.0 Toolkit
+https://github.com/DhollanderJonas/Archivering01/tree/master/Continuous%20Delivery
