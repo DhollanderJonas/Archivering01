@@ -24,7 +24,7 @@ Conintuous Delivery
 
 - https://github.com/DhollanderJonas/Archivering01
 - https://github.com/DhollanderJonas/todobackend
-- https://hub.docker.com/r/dudusolutions/linuxtestcd/
+- https://hub.docker.com/r/dudusolutions/todobackend/
 
 ## Test report
 
