@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: Jonas D'hollander
-- Github repo: <https://github.com/HoGentTIN/elnx-DhollanderJonas.git>
+- Student name: Dries Boone
+- Github repo: <https://github.com/HoGentTIN/elnx-DriesB.git>
 
 
 Conintuous Delivery 
@@ -11,7 +11,6 @@ Conintuous Delivery
 - Read The DevOps 2.0 toolkit and reproduce the given example. Reverse engineer the pipeline
 - Establish gitwebhook for autobuild when push on git
 - Automate install roles when vagrant up
-- Choose 1 job to build
 
 ## Test plan
 

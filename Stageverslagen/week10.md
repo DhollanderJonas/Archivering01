@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: Jonas D'hollander
-- Github repo: <https://github.com/HoGentTIN/elnx-DhollanderJonas.git>
+- Student name: Dries Boone
+- Github repo: <https://github.com/HoGentTIN/elnx-DriesB.git>
 
 
 Conintuous Delivery 
@@ -13,7 +13,7 @@ Conintuous Delivery
 ## Test plan
 
 - Connected to git repo
-- All role available on vagrant up
+- All roles available on vagrant up
 - 1 Job is available for build
 
 ## Documentation
@@ -24,7 +24,9 @@ Conintuous Delivery
 
 ## Test report
 
-The continuous delivery will be established with docker and jenkins as tools
+- The entire git repo gets cloned into the vm
+- Upon `vagrant up` the "prod" and "cd" servers start, still need to manually execute a playbook from within "cd"
+- Only "books-ms" remains as job
 
 ## Resources
 

@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: Jonas D'hollander
-- Github repo: <https://github.com/HoGentTIN/elnx-DhollanderJonas.git>
+- Student name: Dries Boone
+- Github repo: <https://github.com/HoGentTIN/elnx-DriesB.git>
 
 
 Conintuous Delivery 

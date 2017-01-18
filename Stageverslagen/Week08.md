@@ -22,6 +22,7 @@ Verify if the plan is reasonable
 
 The continuous delivery will be established with docker and jenkins as tools
 
+
 ## Resources
 
 DevOps 2.0 Toolkit

@@ -1,7 +1,7 @@
 # Enterprise Linux Lab Report
 
-- Student name: Jonas D'hollander
-- Github repo: <https://github.com/HoGentTIN/elnx-DhollanderJonas.git>
+- Student name: Dries Boone
+- Github repo: <https://github.com/HoGentTIN/elnx-DriesB.git>
 
 
 Conintuous Delivery 
@@ -12,16 +12,20 @@ Conintuous Delivery
 
 ## Test plan
 
-Verify if the plan is reasonable
+The pipeline should (visually) work
 
 ## Documentation
 
 - Cloned the git repository 
-- Document the steps of the build and pipeline
+- Document the steps of the build and pipeline, see [Steps for CD](Steps for CD.md)
 
 ## Test report
 
 The continuous delivery will be established with docker and jenkins as tools
+
+Pipeline is created and works 
+
+![DuDu Solutions](Images/pipelinesucces.PNG)
 
 ## Resources
 
