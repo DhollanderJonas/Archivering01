@@ -2,7 +2,7 @@
 2. Cd continuous delivery -> cd CDFinal
 3. `vagrant up`
 4. Wacht tot ansible klaar is met provisioning
-5. Surf naar 10.100.198.200:8080 -> Jenkins homescreen
+5. Surf naar [10.100.198.200:8080](10.100.198.200:8080) -> Jenkins homescreen
 6. In Jenkins -> start Jenkins job todobackend met wachtwoord “dudusolutions”
 7. `vagrant ssh cd`
 8. `cd \vagrant`
